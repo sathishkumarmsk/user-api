@@ -19,14 +19,14 @@ router.get('/', async (req, res) => {
 });
 router.post('/register', async(req, res) => {
     console.log(req.body);
-    // Check User Exist already
+    
     const user = await db.user.findOne({ where: { email: req.body.email } });
     console.log('check user exist', user);
-    // Password encrypt
+    
     if (user === null) {
         const encryptedPassword = bcrypt.hashSync(req.body.password, 10);
         console.log('Hashed password', encryptedPassword);
-        // Write email, encrypted password to db
+       
         const createdUser = await db.user.create({
             email: req.body.email,
             password: encryptedPassword,
