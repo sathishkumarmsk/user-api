@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use('/user', userRouter);
 
-app.use('/', (req, res) => res.send('Hello '));
+// app.use('/', (req, res) => res.send('Hello '));
 
 const server = http.createServer(app);
 
